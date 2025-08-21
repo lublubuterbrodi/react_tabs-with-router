@@ -2,7 +2,8 @@ import { Link, useLocation } from 'react-router-dom';
 
 export function Navbar() {
   const { pathname } = useLocation();
-  const isHome = pathname === '/' || pathname === '/home';
+
+  const isHome = pathname === '/' || pathname === '/home'; // вдруг где-то попадается /home до редиректа
   const isTabs = pathname === '/tabs' || pathname.startsWith('/tabs/');
 
   return (
@@ -10,11 +11,15 @@ export function Navbar() {
       <div className="container">
         <div className="navbar-brand">
           <div className={`navbar-item${isHome ? ' is-active' : ''}`}>
-            <Link to="/">Home</Link>
+            <Link to="/" className={isHome ? 'is-active' : ''}>
+              Home
+            </Link>
           </div>
 
           <div className={`navbar-item${isTabs ? ' is-active' : ''}`}>
-            <Link to="/tabs">Tabs</Link>
+            <Link to="/tabs" className={isTabs ? 'is-active' : ''}>
+              Tabs
+            </Link>
           </div>
         </div>
       </div>
