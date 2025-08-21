@@ -2,23 +2,20 @@ import { Link, useLocation } from 'react-router-dom';
 
 export function Navbar() {
   const { pathname } = useLocation();
-  const isHome = pathname === '/';
+  const isHome = pathname === '/' || pathname === '/home';
   const isTabs = pathname === '/tabs' || pathname.startsWith('/tabs/');
 
   return (
     <nav className="navbar is-light is-fixed-top has-shadow" data-cy="Nav">
       <div className="container">
         <div className="navbar-brand">
-          <Link to="/" className={`navbar-item${isHome ? ' is-active' : ''}`}>
-            Home
-          </Link>
+          <div className={`navbar-item${isHome ? ' is-active' : ''}`}>
+            <Link to="/">Home</Link>
+          </div>
 
-          <Link
-            to="/tabs"
-            className={`navbar-item${isTabs ? ' is-active' : ''}`}
-          >
-            Tabs
-          </Link>
+          <div className={`navbar-item${isTabs ? ' is-active' : ''}`}>
+            <Link to="/tabs">Tabs</Link>
+          </div>
         </div>
       </div>
     </nav>
